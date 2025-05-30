@@ -1,0 +1,227 @@
+.item-card {
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    padding: 20px;
+    margin: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+}
+
+.item-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.item-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.item-title {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.item-price {
+    font-size: 1.25rem;
+    color: #8100cb;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.item-description {
+    color: #666;
+    margin-bottom: 15px;
+    line-height: 1.4;
+    flex-grow: 1;
+}
+
+.item-stock {
+    color: #28a745;
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+}
+
+.item-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: auto;
+}
+
+.item-buttons button,
+.item-buttons a {
+    width: 100%;
+    padding: 10px 15px;
+    border-radius: 25px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+}
+
+.view-details {
+    background-color: #8100cb !important;
+    color: white !important;
+}
+
+.view-details:hover {
+    background-color: #6b00a8 !important;
+}
+
+.item-count {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.count-controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #f8f9fa;
+    padding: 8px 15px;
+    border-radius: 25px;
+    border: 1px solid #dee2e6;
+}
+
+.count-controls button {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    padding: 0;
+    background-color: #8100cb !important;
+    color: white !important;
+    border: none !important;
+    transition: all 0.3s ease;
+}
+
+.count-controls button:hover {
+    background-color: #6b00a8 !important;
+    transform: scale(1.1);
+}
+
+.count-controls button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.count-display {
+    font-size: 1.2rem;
+    font-weight: bold;
+    min-width: 40px;
+    text-align: center;
+    color: #333;
+}
+
+.add-to-cart {
+    background-color: transparent !important;
+    border: 2px solid #8100cb !important;
+    color: #8100cb !important;
+    margin-top: 5px;
+}
+
+.add-to-cart:hover {
+    background-color: #8100cb !important;
+    color: white !important;
+}
+
+.add-to-cart:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.item-list-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+    margin-top: 80px;
+}
+
+/* Estilos para la vista de detalle */
+.item-detail {
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    padding: 30px;
+    margin: 20px auto;
+    max-width: 1000px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.item-detail-content {
+    display: flex;
+    gap: 40px;
+}
+
+.item-detail-image {
+    flex: 1;
+    max-width: 500px;
+}
+
+.item-detail-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.item-detail-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.item-detail-title {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.item-detail-price {
+    font-size: 1.5rem;
+    color: #8100cb;
+    font-weight: bold;
+}
+
+.item-detail-description {
+    font-size: 1.1rem;
+    color: #666;
+    line-height: 1.6;
+}
+
+.item-detail-stock {
+    font-size: 1rem;
+    color: #28a745;
+}
+
+.loading-container,
+.error-container {
+    text-align: center;
+    padding: 40px;
+    font-size: 1.2rem;
+    color: #666;
+}
+
+.detail-container {
+    padding: 20px;
+    margin-top: 80px;
+} 

@@ -14,12 +14,12 @@
 }
 
 .nav-container h2 {
-    font-size: 24px;
+    font-size: 26px;
     font-weight: bold;
     color: #333;
 }
 
-.nav-container ul {
+.nav-links {
     display: flex;
     list-style: none;
     gap: 20px;
@@ -27,15 +27,153 @@
     padding: 0;
 }
 
-.nav-container ul li a {
+.nav-link-container {
+    position: relative;
+    display: inline-block;
+}
+
+.nav-link-container::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #8100cb;
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.nav-link-container.active::after {
+    transform: scaleX(1);
+}
+
+.nav-link {
     text-decoration: none;
     color: #333;
     font-weight: 500;
-    transition: color 0.3s ease;
+    font-size: 18px;
+    transition: all 0.3s ease;
+    position: relative;
+    padding: 5px 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
 }
 
-.nav-container ul li a:hover {
+.nav-link:hover,
+.nav-link-container.active .nav-link {
     color: #8100cb;
+}
+
+.nav-link:hover .dropdown-arrow,
+.nav-link-container.active .dropdown-arrow {
+    color: #8100cb;
+}
+
+/* Estilos para el dropdown */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Área de hover más grande */
+.dropdown::after {
+    content: '';
+    position: absolute;
+    bottom: -20px;
+    left: 0;
+    width: 100%;
+    height: 20px;
+    background: transparent;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 200px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    z-index: 1;
+    border-radius: 12px;
+    padding: 8px 0;
+    margin-top: 10px;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+}
+
+/* Área de hover para el menú desplegable */
+.dropdown-content::before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: 0;
+    width: 100%;
+    height: 20px;
+    background: transparent;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.dropdown-item {
+    color: #333;
+    padding: 12px 20px;
+    text-decoration: none;
+    display: block;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.dropdown-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 3px;
+    background-color: #8100cb;
+    transform: scaleY(0);
+    transition: transform 0.3s ease;
+}
+
+.dropdown-item:hover,
+.dropdown-item.active {
+    background-color: #f8f0ff;
+    color: #8100cb;
+    padding-left: 25px;
+}
+
+.dropdown-item:hover::before,
+.dropdown-item.active::before {
+    transform: scaleY(1);
+}
+
+/* Efecto de flecha en el menú principal */
+.dropdown > a::after {
+    display: none;
+}
+
+.dropdown:hover > a::after {
+    display: none;
+}
+
+/* Estilos para la flecha del dropdown */
+.dropdown-arrow {
+    font-size: 12px;
+    transition: transform 0.3s ease;
+    margin-left: 2px;
+}
+
+.dropdown:hover .dropdown-arrow {
+    transform: rotate(180deg);
 }
 
 .cart-widget {
