@@ -1,13 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import '../css/Item.css';
 import ItemCount from './ItemCount';
 
 const ItemDetail = ({ detalle }) => {
-    const [showCount, setShowCount] = useState(false);
-
     const handleAddToCart = (quantity) => {
         console.log(`Agregando ${quantity} unidades de ${detalle.name} al carrito`);
-        setShowCount(false);
     };
 
     return (
@@ -25,19 +22,13 @@ const ItemDetail = ({ detalle }) => {
                     <p className="item-detail-description">{detalle.description}</p>
                     <p className="item-detail-stock">Stock disponible: {detalle.stock}</p>
                     
-                    {showCount ? (
+                    <div className="item-detail-buttons">
                         <ItemCount 
                             stock={detalle.stock} 
+                            initial={1}
                             onAdd={handleAddToCart}
                         />
-                    ) : (
-                        <button 
-                            className="btn btn-primary add-to-cart"
-                            onClick={() => setShowCount(true)}
-                        >
-                            Agregar al carrito
-                        </button>
-                    )}
+                    </div>
                 </div>
             </div>
         </div>

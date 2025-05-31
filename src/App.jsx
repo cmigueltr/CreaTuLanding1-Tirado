@@ -11,9 +11,8 @@ function App() {
         <Navbar />
         <main className="main-content">
           <Routes>
-            <Route path="/" element={<ItemListContainer greeting="Bienvenido a Bizzco Cakes and Cookies" />} />
-            <Route path="/products" element={<ItemListContainer greeting="Nuestros Productos" />} />
-            <Route path="/category/:categoryId" element={<ItemListContainer greeting="Categoría" />} />
+            <Route path="/" element={<ItemListContainer greeting="Bienvenidos a Bizzco Cakes and Cookies" />} />
+            <Route path="/category/:categoryId" element={<ItemListContainer/>} />
             <Route path="/item/:id" element={<ItemDetailContainer />} />
           </Routes>
         </main>

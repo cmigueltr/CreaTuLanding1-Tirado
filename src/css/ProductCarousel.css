@@ -1,0 +1,215 @@
+.carousel-container {
+    padding: 20px 60px;
+    margin: 20px 0;
+    width: 100%;
+    position: relative;
+}
+
+.carousel-item {
+    padding: 10px;
+    height: auto;
+}
+
+.carousel-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.carousel-card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+    overflow: hidden;
+}
+
+.carousel-card:hover {
+    transform: translateY(-5px);
+}
+
+.carousel-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.carousel-info {
+    padding: 15px;
+}
+
+.carousel-info h3 {
+    margin: 0;
+    font-size: 18px;
+    color: #333;
+}
+
+.carousel-info .price {
+    margin: 8px 0 0;
+    font-size: 20px;
+    font-weight: bold;
+    color: #8100cb;
+}
+
+/* Estilos para los controles del carrusel */
+.slick-prev,
+.slick-next {
+    width: 50px !important;
+    height: 50px !important;
+    background: #8100cb !important;
+    border-radius: 50% !important;
+    z-index: 1;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+}
+
+.slick-prev:hover,
+.slick-next:hover {
+    background: #6b00a8 !important;
+    transform: scale(1.1);
+}
+
+.slick-prev {
+    left: -25px !important;
+}
+
+.slick-next {
+    right: -25px !important;
+}
+
+.slick-prev:before,
+.slick-next:before {
+    font-size: 25px !important;
+    opacity: 1 !important;
+    color: white !important;
+}
+
+.slick-prev:before {
+    content: "←" !important;
+}
+
+.slick-next:before {
+    content: "→" !important;
+}
+
+/* Estilos para los puntos de navegación */
+.slick-dots {
+    bottom: -40px;
+}
+
+.slick-dots li button:before {
+    font-size: 12px;
+    color: #8100cb;
+    opacity: 0.5;
+}
+
+.slick-dots li.slick-active button:before {
+    color: #8100cb;
+    opacity: 1;
+}
+
+/* Ajustes para las cards en el carrusel */
+.carousel-item .item-card {
+    margin: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    overflow: hidden;
+}
+
+.carousel-item .item-image {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 12px 12px 0 0;
+}
+
+.carousel-item .item-content {
+    padding: 15px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.carousel-item .item-title {
+    font-size: 18px;
+    margin: 10px 0;
+    color: #333;
+}
+
+.carousel-item .item-price {
+    font-size: 20px;
+    font-weight: bold;
+    color: #8100cb;
+    margin: 5px 0;
+}
+
+.carousel-item .item-description {
+    font-size: 14px;
+    color: #666;
+    margin: 5px 0;
+    flex-grow: 1;
+}
+
+.carousel-item .item-stock {
+    font-size: 12px;
+    color: #888;
+    margin: 5px 0;
+}
+
+/* Ajustes para los botones en el carrusel */
+.carousel-item .item-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.carousel-item .view-details,
+.carousel-item .add-to-cart {
+    width: 100%;
+    margin: 0;
+    padding: 10px;
+    text-align: center;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.carousel-item .view-details {
+    background-color: #8100cb;
+    color: white;
+}
+
+.carousel-item .view-details:hover {
+    background-color: #6b00a8;
+}
+
+.carousel-item .add-to-cart {
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+.carousel-item .add-to-cart:hover {
+    background-color: #e0e0e0;
+}
+
+/* Ajustes responsivos */
+@media (max-width: 1024px) {
+    .carousel-item .item-image {
+        height: 200px;
+    }
+}
+
+@media (max-width: 600px) {
+    .carousel-container {
+        padding: 10px 20px;
+    }
+    
+    .carousel-item .item-image {
+        height: 180px;
+    }
+} 

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getProducts } from "../mock/AsyncService";
 import ItemList from "./ItemList";
+import ProductCarousel from "./ProductCarousel";
 
 /**
  * Componente contenedor que maneja la lógica de obtención y visualización de productos
@@ -14,15 +15,29 @@ const ItemListContainer = ({ greeting }) => {
     const [loading, setLoading] = useState(true);
     const { categoryId } = useParams();
 
+    const getCategoryName = (id) => {
+        const categories = {
+            'cakes': 'Tortas',
+            'cookies': 'Galletas',
+            'nuevos': 'Nuevos',
+            'ofertas': 'Ofertas',
+            'masvendidos': 'Más Vendidos'
+        };
+        return categories[id] || 'Productos';
+    };
+
     // Efecto para cargar los productos al montar el componente
     useEffect(() => {
+        console.log('Iniciando la obtención de productos...');
         getProducts()
             .then((response) => {
+                console.log('Respuesta recibida:', response);
                 if (categoryId) {
                     // Filtrar productos por categoría
                     const filteredProducts = response.filter(
                         product => product.category === categoryId
                     );
+                    console.log('Productos filtrados:', filteredProducts);
                     setProducts(filteredProducts);
                 } else {
                     setProducts(response);
@@ -40,7 +55,7 @@ const ItemListContainer = ({ greeting }) => {
         return (
             <div className="greeting-container">
                 <h1>{greeting}</h1>
-                <div className="loading-container">Cargando productos...</div>
+                <div className="loading-container">Cargando...</div>
             </div>
         );
     }
@@ -49,10 +64,20 @@ const ItemListContainer = ({ greeting }) => {
     return (
         <div className="greeting-container">
             <h1>{greeting}</h1>
-            {products.length > 0 ? (
-                <ItemList products={products} />
+            {!categoryId ? (
+                <>
+                    <h2>Nuestros Productos</h2>
+                    <ProductCarousel products={products} />
+                </>
             ) : (
-                <div className="no-products">No hay productos disponibles en esta categoría</div>
+                <>
+                    <h2>{getCategoryName(categoryId)}</h2>
+                    {products.length > 0 ? (
+                        <ItemList products={products} />
+                    ) : (
+                        <div className="no-products">No hay productos disponibles</div>
+                    )}
+                </>
             )}
         </div>
     );

@@ -1,13 +1,14 @@
 .item-card {
     background-color: rgba(255, 255, 255, 0.9);
     border-radius: 15px;
-    padding: 20px;
+    padding: 0;
     margin: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     width: 300px;
     display: flex;
     flex-direction: column;
+    overflow: hidden;
 }
 
 .item-card:hover {
@@ -17,10 +18,16 @@
 
 .item-image {
     width: 100%;
-    height: 200px;
+    height: 250px;
     object-fit: cover;
-    border-radius: 10px;
-    margin-bottom: 15px;
+    border-radius: 15px 15px 0 0;
+}
+
+.item-content {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
 }
 
 .item-title {
@@ -224,4 +231,32 @@
 .detail-container {
     padding: 20px;
     margin-top: 80px;
+}
+
+.item-detail-buttons {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 300px;
+}
+
+.item-detail-buttons .item-count {
+    width: 100%;
+}
+
+.item-detail-buttons .count-controls {
+    width: 100%;
+    justify-content: space-between;
+    padding: 10px 20px;
+}
+
+.item-detail-buttons .count-display {
+    font-size: 1.4rem;
+}
+
+.item-detail-buttons .add-to-cart {
+    width: 100%;
+    padding: 12px;
+    font-size: 1.1rem;
 } 
