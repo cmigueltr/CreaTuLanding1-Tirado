@@ -1,35 +1,86 @@
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { getProducts } from '../mock/AsyncService';
+import React, { useEffect, useState, useContext } from 'react';
+import { useParams, Link } from 'react-router-dom';
 import ItemDetail from './ItemDetail';
+import { LoadingContext } from '../context/LoadingContext';
+import { collection, getDoc, doc } from 'firebase/firestore';
+import { db } from '../service/firebase';
+import Swal from 'sweetalert2';
+import 'sweetalert2/dist/sweetalert2.min.css';
 
 export const ItemDetailContainer = () => {
     const [detalle, setDetalle] = useState(null);
-    const [loading, setLoading] = useState(true);
+    const { setIsLoading } = useContext(LoadingContext);
+    const [invalid, setInvalid] = useState(false);
     const { id } = useParams();
 
     useEffect(() => {
-        console.log('Iniciando la obtención de productos...');
-        getProducts()
-            .then((respuesta) => {
-                console.log('Respuesta recibida:', respuesta);
-                const producto = respuesta.find(producto => producto.id === id);
-                console.log('Producto encontrado:', producto);
-                setDetalle(producto);
-                setLoading(false);
+        console.log('Obteniendo producto con ID:', id);
+        setIsLoading(true);
+        
+        // Conectamos con nuestra colección
+        const productsCollection = collection(db, 'productos');
+        // Crear una referencia al documento que queremos traer
+        const docRef = doc(productsCollection, id);
+        
+        // Traer un documento
+        getDoc(docRef)
+            .then((res) => {
+                if (res.exists()) {
+                    console.log('Producto encontrado:', res.data());
+                    setDetalle({ ...res.data(), id: res.id });
+                } else {
+                    console.log('Producto no encontrado');
+                    setInvalid(true);
+                    Swal.fire({
+                        icon: 'error',
+                        title: '¡Producto no encontrado!',
+                        text: 'El producto que buscas no existe o ha sido removido.',
+                        confirmButtonColor: '#e6007e',
+                        background: 'linear-gradient(135deg, #fff 0%, #f8f9fa 100%)',
+                        color: '#333',
+                        customClass: {
+                            popup: 'swal2-bizzco',
+                            confirmButton: 'swal2-bizzco-btn'
+                        }
+                    });
+                }
             })
-            .catch(error => {
+            .catch((error) => {
                 console.error('Error al obtener el producto:', error);
-                setLoading(false);
-            });
-    }, [id]);
+                setInvalid(true);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Hubo un error al obtener el producto. Intenta nuevamente.',
+                    confirmButtonColor: '#e6007e',
+                    background: 'linear-gradient(135deg, #fff 0%, #f8f9fa 100%)',
+                    color: '#333',
+                    customClass: {
+                        popup: 'swal2-bizzco',
+                        confirmButton: 'swal2-bizzco-btn'
+                    }
+                });
+            })
+            .finally(() => setIsLoading(false));
+    }, [id, setIsLoading]);
 
-    if (loading) {
-        return <div className="loading-container">Cargando...</div>;
+    if (invalid) {
+        return (
+            <div className="error-container">
+                <div className="error-icon">❌</div>
+                <h2>¡Producto no encontrado!</h2>
+                <p className="error-message">
+                    Lo sentimos, el producto que buscas no existe o ha sido removido de nuestro catálogo.
+                </p>
+                <Link to="/" className="back-home-link">
+                    🏠 Volver al inicio
+                </Link>
+            </div>
+        );
     }
 
     if (!detalle) {
-        return <div className="error-container">No se encontró el producto</div>;
+        return null; // El LoadingSpinner se mostrará mientras carga
     }
 
     return (

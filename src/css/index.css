@@ -13,7 +13,6 @@
 body {
   min-width: 320px;
   min-height: 100vh;
-  background: linear-gradient(180deg, #00c6f2 30%, #8100cb 100%) !important;
   background-attachment: fixed;
 }
 

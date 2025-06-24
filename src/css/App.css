@@ -37,3 +37,55 @@
   border-radius: 10px;
   margin-top: 20px;
 }
+
+/* Fondo degradado para el body */
+body {
+    background: linear-gradient(180deg, 
+        #62c2d2 0%, 
+        #5db9c9 8%, 
+        #58b0c0 16%, 
+        #53a7b7 24%, 
+        #4e9eae 32%, 
+        #4995a5 40%, 
+        #448c9c 48%, 
+        #3f8393 56%, 
+        #3a7a8a 64%, 
+        #357181 72%, 
+        #306878 80%, 
+        #2b5f6f 88%, 
+        #265666 96%, 
+        #e6007e 100%);
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+}
+
+.App {
+    text-align: center;
+    min-height: 100vh;
+    background: transparent;
+    position: relative;
+}
+
+.App::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 20% 80%, rgba(230, 0, 126, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(98, 194, 210, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(230, 0, 126, 0.05) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* Fondo degradado para el contenido principal */
+.main-content {
+    background: transparent;
+    min-height: calc(100vh - 80px - 200px); /* Altura total menos navbar y footer */
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
