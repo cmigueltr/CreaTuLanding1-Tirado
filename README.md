@@ -1,5 +1,7 @@
 # Bizzco Cakes and Cookies
 
+🚀 **¡Prueba la app online aquí!** 👉 [crea-tu-landing1-tirado.vercel.app](https://crea-tu-landing1-tirado.vercel.app)
+
 Aplicación web de e-commerce para una pastelería, desarrollada con React y Firebase. Permite a los usuarios navegar productos, agregarlos al carrito, registrarse, realizar compras y ver el estado de sus pedidos. Incluye un panel de administración para gestionar productos (agregar, editar, eliminar) accesible solo para administradores.
 
 ## 🚀 Tecnologías y librerías principales
